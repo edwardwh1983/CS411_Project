@@ -1,0 +1,14 @@
+{
+"name": "Express-web-app",
+"version": "1.0.0",
+"dependencies":
+{
+"body-parser": "^1.8.1",
+"express": "~4.0.0",
+"mysql": "*",
+"ejs": "~1.0.0",
+"moment" : "= 1.7.0",
+"mimelib": "0.2.14",
+"starttls": "0.2.1"
+}
+}

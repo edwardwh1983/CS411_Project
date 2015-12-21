@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+<!-- This is the head part -->
+<head>
+  <title>ConnectMe Job Portal</title>
+  <meta charset="utf-8">
+  <!--This is a CSS-->
+  <link rel="stylesheet", href="style.css">
+
+</head>
+
+<!-- This is the body part -->
+<body>
+	<div id="wrapper">
+	<div id="header">ConnectMe Job Portal <a id="a0" href="index.html"><span>Logout</span></a></div>
+	
+	<div id="leftColumn">
+		<h1>DashBoard </h1>
+		<ul>
+			<li id="head"><a id="a1" href="#" onclick="toggleMenu('menu1')"> My account</a>
+				<ul id="menu1">
+					<li><a href="#" onclick="accProfile()">Account Details</a></li>
+					<li><a href="#" onclick="accUpdate()">Update Account</a></li>
+				</ul>
+			</li>
+			<li id="nav"><a id="a2" href="#" onclick="toggleMenu('menu2')"> Degree</a>
+				<ul id="menu2">
+					<li><a href="#">BS</a></li>
+					<li><a href="#">MS</a></li>
+					<li><a href="#">PhD</a></li>
+				</ul>
+			</li>
+			<li id="nav"><a id="a3" href="#" onclick="toggleMenu('menu3')"> Company</a>
+				<ul id="menu3">
+					<li><a href="#">Apple</a></li>
+					<li><a href="#">Amazon</a></li>
+					<li><a href="#">Facebook</a></li>
+					<li><a href="#">Google</a></li>
+					<li><a href="#">Linkedin</a></li>	
+					<li><a href="#">Microsoft</a></li>	
+				</ul>
+			</li>
+			<li id="nav"><a id="a4" href="#" onclick="toggleMenu('menu4')"> Salary</a>
+				<ul id="menu4">
+					<li><a href="#">$60000-80000</a></li>
+					<li><a href="#">$80000-100000</a></li>
+					<li><a href="#">$100000-120000</a></li>	
+					<li><a href="#">$120000-140000</a></li>	
+					<li><a href="#">$140000+</a></li>
+				</ul>
+			</li>
+		</ul>
+		
+	</div>
+	
+	<div id="rightColumn">
+		<form action="server_side" method="post">
+		<fieldset>
+		<legend>Search</legend>
+		Field
+		<select name="activities"> 
+			<option value="Software Engineering">Software Engineering</option>
+			<option value="Machine Learning">Machine Learning</option>
+			<option value="Web Developer">Web Developer</option>
+			<option value="Data Analyst">Data Analyst</option>
+			<option value="Systems Engineer">Systems Engineer</option>
+		</select>
+		Location 
+		<select name="activity">
+			<option value="AL">AL</option> <option value="AK">AK</option> <option value="AZ">AZ</option> <option value="AR">AR</option> 
+			<option value="CA" selected>CA</option> <option value="CO">CO</option> <option value="CT">CT</option> 
+			<option value="DE">DE</option> <option value="FL">FL</option> <option value="GA">GA</option> <option value="HI">HI</option> <option value="ID">ID</option> <option value="IL">IL</option> 
+			<option value="IN">IN</option> <option value="IA">IA</option> <option value="KS">KS</option> <option value="KY">KY</option> <option value="LA">LA</option> <option value="ME">ME</option>
+			<option value="MD">MD</option> <option value="MA">MA</option> <option value="MI">MI</option> <option value="MN">MN</option> <option value="MS">MS</option> <option value="MO">MO</option> 
+			<option value="MT">MT</option> <option value="NE">NE</option> <option value="NV">NV</option> <option value="NH">NH</option> <option value="NJ">NJ</option> <option value="NM">NM</option> 
+			<option value="NY">NY</option> <option value="NC">NC</option> <option value="ND">ND</option> <option value="OH">OH</option> <option value="OK">OK</option> <option value="OR">OR</option> 
+			<option value="PA">PA</option> <option value="RI">RI</option> <option value="SC">SC</option> <option value="SD">SD</option> <option value="TN">TN</option> <option value="TX">TX</option> 
+			<option value="UT">UT</option> <option value="VT">VT</option> <option value="VA">VA</option> <option value="WA">WA</option> <option value="WV">WV</option> <option value="WI">WI</option> 
+			<option value="WY">WY</option>
+		</select>
+		<input type="submit" value="Find Jobs">
+		</fieldset>
+		</form>
+		
+		<div id="fm2">
+		<fieldset>
+		<legend>Account Profile</legend>
+			<b>Name</b>: <div class="acc" id="acc_name"></div><br>
+			<b>Birthday</b>: <div class="acc" id="acc_birthday"></div><br>
+			<b>Email</b>: <div class="acc" id="acc_email"></div><br>
+			<b>Phone</b>: <div class="acc" id="acc_phone"></div><br>
+			<b>Major</b>: <div class="acc" id="acc_major"></div><br>
+			<b>Address</b>: <div class="acc" id="acc_address"></div><br>
+			<b>Skills</b>: <div class="acc" id="acc_skills"></div><br>
+		</fieldset>
+		</div>
+		
+		<form action="server_side" method="post" id="fm3">
+		<fieldset>
+		<legend>Account Information</legend>
+		<b>FirstName:</b> 
+		<input type="text" id="firstName" size=15%><br>
+		<b>LastName:</b> 
+		<input type="text" id="lastName" size=15%><br>
+		<b>Birthday:</b>
+		<input type="date" id="birthday" name="birthday"><br>
+		<b>Email:</b>
+		<input type="email" id="email" size=30%><br>
+		<b>Phone number:</b> 
+		<input type="text" id="phone" size=15%><br>
+		<b>Major:</b> 
+		<input type="text" id="major" size=15%><br>
+		<b>Address:</b> 
+		<input type="text" id="address" size=40%><br>
+		<b>City:</b> 
+		<input type="text" id="city" size=15%>
+		<b>State:</b>
+		<select id="state">
+			<option value=""></option>
+			<option value="AL">AL</option> <option value="AK">AK</option> <option value="AZ">AZ</option> <option value="AR">AR</option> 
+			<option value="CA">CA</option> <option value="CO">CO</option> <option value="CT">CT</option> 
+			<option value="DE">DE</option> <option value="FL">FL</option> <option value="GA">GA</option> <option value="HI">HI</option> <option value="ID">ID</option> <option value="IL">IL</option> 
+			<option value="IN">IN</option> <option value="IA">IA</option> <option value="KS">KS</option> <option value="KY">KY</option> <option value="LA">LA</option> <option value="ME">ME</option>
+			<option value="MD">MD</option> <option value="MA">MA</option> <option value="MI">MI</option> <option value="MN">MN</option> <option value="MS">MS</option> <option value="MO">MO</option> 
+			<option value="MT">MT</option> <option value="NE">NE</option> <option value="NV">NV</option> <option value="NH">NH</option> <option value="NJ">NJ</option> <option value="NM">NM</option> 
+			<option value="NY">NY</option> <option value="NC">NC</option> <option value="ND">ND</option> <option value="OH">OH</option> <option value="OK">OK</option> <option value="OR">OR</option> 
+			<option value="PA">PA</option> <option value="RI">RI</option> <option value="SC">SC</option> <option value="SD">SD</option> <option value="TN">TN</option> <option value="TX">TX</option> 
+			<option value="UT">UT</option> <option value="VT">VT</option> <option value="VA">VA</option> <option value="WA">WA</option> <option value="WV">WV</option> <option value="WI">WI</option> 
+			<option value="WY">WY</option>
+		</select><br>
+		<b>Skills:</b>
+			<input type="checkbox" name="skills" value="C" size=15%>C
+			<input type="checkbox" name="skills" value="C++" size=15%>C++
+			<input type="checkbox" name="skills" value="Java" size=15%>Java
+			<input type="checkbox" name="skills" value="Python" size=15%>Python
+			<input type="checkbox" name="skills" value="SQL" size=15%>SQL  
+		&nbsp &nbsp others:
+		<input type="text" id="others" size=30%><br>
+			
+		<input type="button" value="Save" onclick="save()"> 
+		</fieldset>
+		</form>
+	</div>
+	
+	<div id="footer"><center>@2015 TigerTeam</center></div>
+	</div>
+  
+	<!-- This is a javascript -->
+	<script src="main.js"></script>
+  
+</body>
+
+</html>

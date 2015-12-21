@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+
+<!-- This is the head part -->
+<head>
+  <title>ConnectMe Job Portal</title>
+  <meta charset="utf-8">
+  <!--This is a CSS-->
+  <link rel="stylesheet", href="style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="jquery.js"></script>
+
+</head>
+
+<!-- This is the body part -->
+<body>
+	<div id="background">
+		<img id="backimage" src = "careers.jpg">
+		<div id="header">
+			<div id="connectme">ConnectMe Job Portal</div>
+			<div id="subscript">where engineers meet</div>
+			<form id="fm"> 
+				Role:
+				<select id="role">
+					<option value="Admin">Admin</option>
+					<option value="User" selected>User</option>
+				</select>
+				Username:&nbsp<input type="text" id="username" size=15%>
+				Password:&nbsp<input type="password" id="password" size=15%>
+						 <input type="button" id="Login" value="Login">
+			</form>
+			<p id="p0"></p>
+			<a id="a0" href="#">Logout</a><br>
+		</div>
+		
+		<div id="leftColumn">
+			<!--Create User-->
+			<div id="NewUser">Not a member?<br>
+				<a id="newAcc1" href="#" onclick="Register()">
+					Join ConnectMe
+				</a>
+				<form id="CreateUser">
+					<div id="newAcc2">Create New Account</div><br><br>
+					<b>Email Address:</b><br> 
+					<input type="text" id="NewUser_Email" size=22%><br><br>
+					<b>Username:</b><br>
+					<input type="text" id="NewUser_FN" size=15%><br><br>
+					<b>Password:</b><br>
+					<input type="password" id="NewUser_PW" size=15%><br><br><br>
+					<a id="createAccount" href="#">Create Account</a>
+				
+				</form>			
+			</div>
+			<div id="dashboard">
+				<h1>DashBoard </h1>
+				<ul>
+					<li class="nav" id="accountField"><a id="a1" href="#" onclick="toggleMenu('accountMenu')"> My account</a>
+						<ul id="accountMenu">
+							<li><a href="#" id='accoungDetail'>Account Details</a></li>
+							<li><a href="#" id='updateAccount'>Update Account</a></li>
+							<li><a href="#" id='recommendJob'>Recommendations</a></li>
+						</ul>
+					</li>
+					<div id="searchField">
+						<li class="nav" id="selectedField"><a id="a5" href="#" onclick="toggleMenu('selMenu')"> Selected</a>
+							<ul id="selMenu"></ul>
+						</li>
+						<li class="nav" id="degreeField"><a id="a2" href="#" onclick="toggleMenu('degreeMenu')"> Degree</a>
+							<ul id="degreeMenu"></ul>
+						</li>
+						<li class="nav" id="companyField"><a id="a3" href="#" onclick="toggleMenu('companyMenu')"> Company</a>
+							<ul id="companyMenu"></ul>
+						</li>
+					</div>
+				</ul>
+			</div>
+
+			<div id="admin">
+			<h2>Administrator DashBoard </h2>
+				<div id="AdminUser"><a id="a6" href="#" onclick="AdminUser()"> Users</a>
+				</div>
+				<div id="AdminJob"><a id="a7" href="#" onclick="AdminJob()"> Job Listings</a>
+				</div>
+			</div>
+
+		</div>
+
+
+
+		
+		<div id="rightColumn">
+		<div id="transbox">
+			<p id="p1">ConnectMe is a database resource providing plenty of engineering job opportunities, including full-time 
+			and internship worldwide, which is especially useful to those computer science and related major students seeking for jobs. 
+			It allows the user to search for job postings in terms of their skills, 
+			location preference, salary expectation, etc.</p>
+		</div>
+		
+		<div id="transbox1">
+			<p id="p2">Welcome, Admin. Here, you can view the information of all users, add new jobs and edit existing jobs</p>
+		</div>
+			
+			<form id='fm1' action="server_side" method="post">
+			<fieldset id='search'>
+			<p id="p3">Find a job</p>
+			<select name="activities" id="fieldOption">
+				<option value="job_field">Job Field...</option>
+				<option value="All">All</option>
+			</select>
+			
+			<select name="activity" id="stateOption">
+				<option value="location">Job Location...</option> 
+				<option value="All State">All State</option>
+				<option value="AL">AL</option> <option value="AK">AK</option> <option value="AZ">AZ</option> <option value="AR">AR</option> 
+				<option value="CA">CA</option> <option value="CO">CO</option> <option value="CT">CT</option> 
+				<option value="DE">DE</option> <option value="FL">FL</option> <option value="GA">GA</option> <option value="HI">HI</option> <option value="ID">ID</option> <option value="IL">IL</option> 
+				<option value="IN">IN</option> <option value="IA">IA</option> <option value="KS">KS</option> <option value="KY">KY</option> <option value="LA">LA</option> <option value="ME">ME</option>
+				<option value="MD">MD</option> <option value="MA">MA</option> <option value="MI">MI</option> <option value="MN">MN</option> <option value="MS">MS</option> <option value="MO">MO</option> 
+				<option value="MT">MT</option> <option value="NE">NE</option> <option value="NV">NV</option> <option value="NH">NH</option> <option value="NJ">NJ</option> <option value="NM">NM</option> 
+				<option value="NY">NY</option> <option value="NC">NC</option> <option value="ND">ND</option> <option value="OH">OH</option> <option value="OK">OK</option> <option value="OR">OR</option> 
+				<option value="PA">PA</option> <option value="RI">RI</option> <option value="SC">SC</option> <option value="SD">SD</option> <option value="TN">TN</option> <option value="TX">TX</option> 
+				<option value="UT">UT</option> <option value="VT">VT</option> <option value="VA">VA</option> <option value="WA">WA</option> <option value="WV">WV</option> <option value="WI">WI</option> 
+				<option value="WY">WY</option>
+			</select>
+			<input type="button" value="search" id="searchJob">
+			</fieldset>
+			</form>
+			
+			<div id="fm2">
+			<fieldset>
+			<legend>Account Profile</legend>
+				<b>Name</b>: <div class="acc" id="acc_name"></div><br>
+				<b>Email</b>: <div class="acc" id="acc_email"></div><br>
+				<b>Phone</b>: <div class="acc" id="acc_phone"></div><br>
+				<b>Major</b>: <div class="acc" id="acc_major"></div><br>
+				<b>Address</b>: <div class="acc" id="acc_address"></div><br>
+				<b>Skills</b>: <div class="acc" id="acc_skills"></div><br>
+			</fieldset>
+			</div>
+
+			<div id="jobFrame"></div>
+
+			<div id='companyFrame'></div>
+
+			<div id='recomFrame'>
+				<ul id="sortableSkill"></ul>
+					<fieldset id = "recJob">
+					<legend>Recommended Jobs</legend>
+					<ul id="recJobList"></ul>
+					</fieldset>
+			</div>
+
+			<!--Admin User List Frame-->
+			<div id="userList">
+			<h2>Users <span id="subtitle">All users</span></h2>
+			<table id ="userTable">
+			</table>
+			</div>
+
+			<!--Admin Job List Frame-->
+			<div id="jobList">
+			<h2>Jobs <span id="subtitle">Job Listings</span></h2>
+			<a id="Adding" href="#" onclick="addJobs()">Add Jobs</a><br><br>			
+			<table id ="jobTable">
+			</table>
+			</div>
+
+			<!--Edit Jobs Frame-->
+			<div id="editJob">
+			<h2 class="JobUpdate"></h2>
+			<form>
+			<label>Job ID:</label><br>
+			<input type="text" id="jobID" size=30%><br><br>			
+			<label>Job Title:</label><br>
+			<input type="text" id="jobTitle" size=30%><br><br>
+			<label>Company:</label><br>
+			<input type="text" id="jobCom" size=30%><br><br>			
+			<label>Location:</label><br>
+			<input type="text" id="jobLoc" size=20%><br><br>
+			<label>Minimum Degree:</label><br>
+			<input type="text" id="jobDeg" size=20%><br><br>
+			<label>Job Description:</label><br>
+			<textarea id = "jobDes" cols="80" rows="10"></textarea><br><br>
+			<input type="button" id = "saveJob" value="Save"><br><br> 
+			<a id="back" href="#" onclick="backToJobs()">Back to Job Listings</a>
+			</form>
+			</div>
+
+
+			<!--Add Jobs Frame-->
+			<div id="addJob">
+			<h2 class="JobUpdate"></h2>
+			<form>
+			<label>Job ID:</label><br>
+			<input type="text" class = "jobInput" id="addjobID" size=30%><br><br>			
+			<label>Job Title:</label><br>
+			<input type="text" class = "jobInput" id="addjobTitle" size=30%><br><br>
+			<label>Company:</label><br>
+			<input type="text" class = "jobInput" id="addjobCom" size=30%><br><br>			
+			<label>Location:</label><br>
+			<input type="text" class = "jobInput" id="addjobLoc" size=20%><br><br>
+			<label>Minimum Degree:</label><br>
+			<input type="text" class = "jobInput" id="addjobDeg" size=20%><br><br>
+			<label>Link:</label><br>
+			<input type="text" class = "jobInput" id="addjobLink" size=50%><br><br>
+			<label>Job Description:</label><br>
+			<textarea class = "jobInput" id = "addjobDes" cols="80" rows="10"></textarea><br><br>
+			<input type="button" id = "addsaveJob" value="Save"><br><br> 
+			<a id="addback" href="#" onclick="backToJobs()">Back to Job Listings</a>
+			</form>
+			</div>
+			
+			<form  id="fm3" action="server_side" method="post">
+			<fieldset>
+			<legend>Account Information</legend>
+			<b>FirstName:</b> 
+			<input type="text" id="firstName" size=15%><br>
+			<b>LastName:</b> 
+			<input type="text" id="lastName" size=15%><br>
+			<b>Email:</b>
+			<input type="email" id="email" size=30%><br>
+			<b>Phone number:</b> 
+			<input type="text" id="phone" size=15%><br>
+			<b>Major:</b> 
+			<input type="text" id="major" size=15%><br>
+			<b>Address:</b> 
+			<input type="text" id="address" size=40%><br>
+			<b>City:</b> 
+			<input type="text" id="city" size=15%>
+			<b>State:</b>
+			<select id="state">
+				<option value=""></option>
+				<option value="AL">AL</option> <option value="AK">AK</option> <option value="AZ">AZ</option> <option value="AR">AR</option> 
+				<option value="CA">CA</option> <option value="CO">CO</option> <option value="CT">CT</option> 
+				<option value="DE">DE</option> <option value="FL">FL</option> <option value="GA">GA</option> <option value="HI">HI</option> <option value="ID">ID</option> <option value="IL">IL</option> 
+				<option value="IN">IN</option> <option value="IA">IA</option> <option value="KS">KS</option> <option value="KY">KY</option> <option value="LA">LA</option> <option value="ME">ME</option>
+				<option value="MD">MD</option> <option value="MA">MA</option> <option value="MI">MI</option> <option value="MN">MN</option> <option value="MS">MS</option> <option value="MO">MO</option> 
+				<option value="MT">MT</option> <option value="NE">NE</option> <option value="NV">NV</option> <option value="NH">NH</option> <option value="NJ">NJ</option> <option value="NM">NM</option> 
+				<option value="NY">NY</option> <option value="NC">NC</option> <option value="ND">ND</option> <option value="OH">OH</option> <option value="OK">OK</option> <option value="OR">OR</option> 
+				<option value="PA">PA</option> <option value="RI">RI</option> <option value="SC">SC</option> <option value="SD">SD</option> <option value="TN">TN</option> <option value="TX">TX</option> 
+				<option value="UT">UT</option> <option value="VT">VT</option> <option value="VA">VA</option> <option value="WA">WA</option> <option value="WV">WV</option> <option value="WI">WI</option> 
+				<option value="WY">WY</option>
+			</select><br>
+			<b>Skills:</b>
+				<input type="checkbox" id="Ccheck" name="skills" value="C" size=15%>C
+				<input type="checkbox" id="Cppcheck" name="skills" value="C++" size=15%>C++
+				<input type="checkbox" id="Javacheck" name="skills" value="Java" size=15%>Java
+				<input type="checkbox" id="Pythoncheck" name="skills" value="Python" size=15%>Python
+				<input type="checkbox" id="SQLcheck" name="skills" value="SQL" size=15%>SQL  
+			&nbsp &nbsp others:
+			<input type="text" id="others" size=30%><br>
+				
+			<input type="button" id="saveUserInfo" value="Save"> 
+			</fieldset>
+			</form>
+		</div>
+		
+		<div id="footer"><center>@2015 TigerTeam</center></div>
+	</div>
+  
+	<!-- This is a javascript -->
+	<script src="javascript.js"></script>
+  
+  	<div id="confirmCodeDialog">
+	    <form>
+	        <label for="code" ><font size="2">A confrim code has been sent to your mail box, please enter:</font></label>
+	        <input type="text" name="code" id="confirmCode" class="text ui-widget-content ui-corner-all" />
+	    </form>
+	</div>
+</body>
+
+</html>

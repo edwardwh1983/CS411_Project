@@ -1,7 +1,7 @@
 var mysql     =    require('mysql');
 
 var pool      =    mysql.createPool({
-    connectionLimit : 100, 
+    connectionLimit : 100,
     host     : 'localhost',
     user     : 'yanwen',
     password : '1234',
@@ -12,9 +12,9 @@ var pool      =    mysql.createPool({
 var email   = require('emailjs/email');
 
 var Sender  = email.server.connect({
-   user:    "connectmeuiuc", 
-   password:"connectme1234", 
-   host:    "smtp.gmail.com", 
+   user:    "connectmeuiuc",
+   password:"connectme1234",
+   host:    "smtp.gmail.com",
    ssl:     true
 });
 
@@ -33,7 +33,7 @@ module.exports=function(app){
     login(role, userName, passWord, res);
   });
 
-  //handle amdin login
+  //handle admin login
   app.post('/LOGIN_admin', function (req, res) {
     var role = req.body.role;
     var userName=req.body.user;
@@ -44,7 +44,7 @@ module.exports=function(app){
 
   function login(role, userName, passWord, res){
     var query;
-    if(role ==0){
+    if(role == 0){
       query = "select password from admin where netid = '" + userName + "';";
     }else{
       query = "select password from user where netid = '" + userName + "';";
@@ -72,8 +72,8 @@ module.exports=function(app){
       connection.query(query, function(err,rows){
         connection.release();
         res.send(rows);
-      });   
-    }); 
+      });
+    });
   });
 
   //user Information
@@ -83,8 +83,8 @@ module.exports=function(app){
       connection.query(query, function(err,rows){
         connection.release();
         res.send(rows);
-      });   
-    }); 
+      });
+    });
   });
 
   app.post('/addUser', function (req, res) {
@@ -195,7 +195,7 @@ module.exports=function(app){
               content = "(select id from job where "
             else
               content = "(select * from job where "
-            
+
             for(var i in arrCom)
                 content += "Company = '" + arrCom[i] + "' or ";
 
@@ -240,8 +240,8 @@ module.exports=function(app){
       connection.query(query, function(err,rows){
         connection.release();
         res.send(rows);
-      });   
-    }); 
+      });
+    });
   });
 
   //Update user Information
@@ -261,12 +261,12 @@ module.exports=function(app){
       connection.query(query, function(err,rows){
         connection.release();
         if(err){
-          res.send("false"); 
+          res.send("false");
           return;
         }
         res.send("true");
       });
-    }); 
+    });
   });
   app.post('/updateSkill', function (req, res) {
     pool.getConnection(function(err,connection){
@@ -310,7 +310,7 @@ module.exports=function(app){
         res.send("true");
       else
         res.send("false");
-    });  
+    });
   });
 
 
@@ -321,8 +321,8 @@ module.exports=function(app){
       connection.query(query, function(err,rows){
         connection.release();
         res.send(rows);
-      });   
-    }); 
+      });
+    });
   });
 
   //handle job list
@@ -332,8 +332,8 @@ module.exports=function(app){
       connection.query(query, function(err,rows){
         connection.release();
         res.send(rows);
-      });   
-    }); 
+      });
+    });
   });
 
   //handle delete job from job list
@@ -379,7 +379,7 @@ module.exports=function(app){
     var jobLoc = req.body.Location;
     var jobDeg = req.body.Degree;
     var jobDes = req.body.Description;
-    
+
     //add to db
     var query = "Update Job set Company = N'" + jobCom + "', FIELD = N'" + jobTitle + "', Description = N'" + jobDes + "', MinimumDegree = N'" + jobDeg + "', Location = N'" + jobLoc + "' where ID =" + jobID+ ";";
     pool.getConnection(function(err,connection){
@@ -405,7 +405,7 @@ module.exports=function(app){
     var jobDeg = req.body.Degree;
     var jobDes = req.body.Description;
     var jobLink = req.body.Link;
-    
+
     //insert into db
     var query = "INSERT INTO Job VALUES ("+jobID+", N'" + jobCom + "', N'" + jobDes + "', N'" + jobTitle + "', N'" + jobDeg + "', N'" + jobLoc + "', N'" + jobLink + "');";
     console.log(query);
@@ -429,16 +429,16 @@ module.exports=function(app){
       var email = req.body.userEmail;
       var code = buf.toString('hex');
       Sender.send({
-         text:    "Your confirm code is: " + code, 
-         from:    "ConnectMe", 
+         text:    "Your confirm code is: " + code,
+         from:    "ConnectMe",
          to:      email,
          cc:      "",
          subject: "Hello from ConnectMe"
-      }, function(err, message) { 
-        if(!err) 
+      }, function(err, message) {
+        if(!err)
           res.send(code);
-        else 
-          res.send("/IncorrectEmail"); 
+        else
+          res.send("/IncorrectEmail");
       });
     });
   });
@@ -475,7 +475,7 @@ module.exports=function(app){
           console.log("Err happen");
       });
     });
-    
+
   });
 
 }
